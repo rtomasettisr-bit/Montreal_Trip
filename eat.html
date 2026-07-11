@@ -4,148 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0E1A2B">
+<meta name="theme-color" content="#FCFBF7">
 <title>Eat &amp; Drink — Montréal</title>
-<link rel="icon" href="icon.svg">
-<link rel="apple-touch-icon" href="icon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="topbar">
-  <div class="mark"><b>MTL</b> · eat &amp; drink</div>
-  <div class="pill">reserve early</div>
-</div>
+<div class="topbar"><div class="mark"><b>MTL</b> · eat &amp; drink</div><div class="pill blue">reserve early</div></div>
 
 <div class="wrap">
   <section class="hero" style="padding-bottom:8px">
-    <div class="eyebrow">Where to eat</div>
-    <h1 style="font-size:clamp(40px,12vw,64px)">Bagels to<br><em>tasting menus.</em></h1>
-    <p class="sub">Everything below is walkable-by-neighborhood and metro-connected. Reserve dinners a week out — more so during MTLàTABLE.</p>
+    <span class="eyebrow red">Where to eat</span>
+    <h1 style="font-size:clamp(38px,11vw,60px)">Bagels to<br><span class="hl">tasting menus.</span></h1>
+    <p class="sub">Walkable-by-neighborhood and metro-connected. Reserve dinners a week out — more so during MTLàTABLE.</p>
   </section>
 
   <div class="chips" id="chips">
     <div class="chip on" data-f="all">All</div>
-    <div class="chip" data-f="dinner"><span class="dot" style="background:#E5604D"></span>Dinner</div>
-    <div class="chip" data-f="iconic"><span class="dot" style="background:#E8B84B"></span>Iconic &amp; casual</div>
-    <div class="chip" data-f="brunch"><span class="dot" style="background:#6FB1A0"></span>Brunch &amp; café</div>
-    <div class="chip" data-f="bar"><span class="dot" style="background:#B78BE0"></span>Bars</div>
+    <div class="chip" data-f="dinner"><span class="dot" style="background:#F5482E"></span>Dinner</div>
+    <div class="chip" data-f="iconic"><span class="dot" style="background:#FFC220"></span>Iconic</div>
+    <div class="chip" data-f="brunch"><span class="dot" style="background:#0FA88E"></span>Brunch &amp; café</div>
+    <div class="chip" data-f="bar"><span class="dot" style="background:#1B44E0"></span>Bars</div>
   </div>
 
-  <!-- DINNER -->
-  <div class="card" data-cat="dinner">
-    <h3>Le Club Chasse et Pêche</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$$$</span><span class="badge pick">Michelin</span><span class="badge warn">closed Sun/Mon</span></div>
-    <p>The big-ticket dinner — seasonal Québécois, intimate, oysters to die for. A top MTLàTABLE booking. Reserve as early as you can.</p>
-  </div>
-  <div class="card" data-cat="dinner">
-    <h3>Barroco</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$$</span><span class="badge">French · romantic</span></div>
-    <p>Candlelit, rustic, perfect first-night dinner steps from the old-town hotels. Filet and braised beef are the moves.</p>
-  </div>
-  <div class="card" data-cat="dinner">
-    <h3>Garde Manger</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$$$</span><span class="badge">seafood · lively</span></div>
-    <p>Chuck Hughes' buzzy seafood spot — go for the tasting menu and the energy. Great backup to Barroco.</p>
-  </div>
-  <div class="card" data-cat="dinner">
-    <h3>Le Majestique</h3>
-    <div class="meta"><span>Plateau · The Main</span><span class="price">$$</span><span class="badge">small plates</span></div>
-    <p>Eclectic, fun, a little chaotic — order family-style. Oysters, tartare, and a late bar vibe. Very your-speed.</p>
-  </div>
-  <div class="card" data-cat="dinner">
-    <h3>Bistrot La Fabrique</h3>
-    <div class="meta"><span>Plateau · St-Denis</span><span class="price">$$</span><span class="badge">bistro · date night</span></div>
-    <p>Cozy open-kitchen bistro, famous french toast, thoughtful wine. The sweet-spot date dinner.</p>
-  </div>
+  <div class="card" data-cat="dinner"><h3>Le Club Chasse et Pêche</h3><div class="meta"><span>Old Montréal</span><span class="price">$$$$</span><span class="badge pick">Michelin</span><span class="badge warn">closed Sun/Mon</span></div><p>The big-ticket dinner — seasonal Québécois, intimate, oysters to die for. A top MTLàTABLE booking. Reserve as early as you can.</p></div>
+  <div class="card" data-cat="dinner"><h3>Barroco</h3><div class="meta"><span>Old Montréal</span><span class="price">$$$</span><span class="badge">French · romantic</span></div><p>Candlelit, rustic, perfect first-night dinner steps from the old-town hotels. Filet and braised beef are the moves.</p></div>
+  <div class="card" data-cat="dinner"><h3>Garde Manger</h3><div class="meta"><span>Old Montréal</span><span class="price">$$$$</span><span class="badge">seafood · lively</span></div><p>Chuck Hughes' buzzy seafood spot — go for the tasting menu and the energy. Great backup to Barroco.</p></div>
+  <div class="card" data-cat="dinner"><h3>Le Majestique</h3><div class="meta"><span>Plateau · The Main</span><span class="price">$$</span><span class="badge">small plates</span></div><p>Eclectic, fun, a little chaotic — order family-style. Oysters, tartare, and a late bar vibe. Very your-speed.</p></div>
+  <div class="card" data-cat="dinner"><h3>Bistrot La Fabrique</h3><div class="meta"><span>Plateau · St-Denis</span><span class="price">$$</span><span class="badge">bistro · date night</span></div><p>Cozy open-kitchen bistro, famous french toast, thoughtful wine. The sweet-spot date dinner.</p></div>
 
-  <!-- ICONIC / CASUAL -->
-  <div class="card" data-cat="iconic">
-    <h3>Schwartz's Deli</h3>
-    <div class="meta"><span>The Main</span><span class="price">$$</span><span class="badge pick">institution</span></div>
-    <p>The mandatory Montréal smoked-meat sandwich since 1928. Cramped, shared tables, cash-friendly — go off-peak.</p>
-  </div>
-  <div class="card" data-cat="iconic">
-    <h3>La Banquise</h3>
-    <div class="meta"><span>Plateau</span><span class="price">$</span><span class="badge">poutine · 24h</span></div>
-    <p>30+ poutines, open all night — the perfect drunk-o'clock or hungover 2am plan. Try L'Obélix (smoked meat).</p>
-  </div>
-  <div class="card" data-cat="iconic">
-    <h3>Fairmount &amp; St-Viateur Bagel</h3>
-    <div class="meta"><span>Mile End</span><span class="price">$</span><span class="badge">the showdown</span></div>
-    <p>Two legendary wood-fired bagel shops, two blocks apart, both open ~24h. Buy from both, decide who's right.</p>
-  </div>
+  <div class="card" data-cat="iconic"><h3>Schwartz's Deli</h3><div class="meta"><span>The Main</span><span class="price">$$</span><span class="badge pick">institution</span></div><p>The mandatory Montréal smoked-meat sandwich since 1928. Cramped, shared tables, cash-friendly — go off-peak.</p></div>
+  <div class="card" data-cat="iconic"><h3>La Banquise</h3><div class="meta"><span>Plateau</span><span class="price">$</span><span class="badge">poutine · 24h</span></div><p>30+ poutines, open all night — the perfect drunk-o'clock or hungover 2am plan. Try L'Obélix (smoked meat).</p></div>
+  <div class="card" data-cat="iconic"><h3>Fairmount &amp; St-Viateur Bagel</h3><div class="meta"><span>Mile End</span><span class="price">$</span><span class="badge">the showdown</span></div><p>Two legendary wood-fired bagel shops, two blocks apart, both ~24h. Buy from both, decide who's right.</p></div>
 
-  <!-- BRUNCH / CAFE -->
-  <div class="card" data-cat="brunch">
-    <h3>Crew Collective &amp; Café</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$</span><span class="badge pick">the photo</span></div>
-    <p>Coffee and brunch inside a jaw-dropping former bank hall — soaring vaulted ceilings. Get the grilled cheese.</p>
-  </div>
-  <div class="card" data-cat="brunch">
-    <h3>Chez José Café</h3>
-    <div class="meta"><span>Plateau</span><span class="price">$</span><span class="badge">cozy · brunch</span><span class="badge warn">closed Wed</span></div>
-    <p>Tiny, warm, huge personality — breakfast sandwiches, pastéis de nata, Portuguese leanings. Weekend waitlist.</p>
-  </div>
-  <div class="card" data-cat="brunch">
-    <h3>L'Avenue</h3>
-    <div class="meta"><span>Plateau</span><span class="price">$$</span><span class="badge">the blowout</span></div>
-    <p>Legendary over-the-top brunch — giant plates, pistachio french toast. Expect a line; worth it.</p>
-  </div>
-  <div class="card" data-cat="brunch">
-    <h3>Café Olimpico</h3>
-    <div class="meta"><span>Mile End</span><span class="price">$</span><span class="badge">espresso</span></div>
-    <p>Old-school Italian espresso bar. Cappuccino + cannoli, no rush, all the neighborhood energy.</p>
-  </div>
+  <div class="card" data-cat="brunch"><h3>Crew Collective &amp; Café</h3><div class="meta"><span>Old Montréal</span><span class="price">$$</span><span class="badge pick">the photo</span></div><p>Coffee and brunch inside a jaw-dropping former bank hall — soaring vaulted ceilings. Get the grilled cheese.</p></div>
+  <div class="card" data-cat="brunch"><h3>Chez José Café</h3><div class="meta"><span>Plateau</span><span class="price">$</span><span class="badge">cozy · brunch</span><span class="badge warn">closed Wed</span></div><p>Tiny, warm, huge personality — breakfast sandwiches, pastéis de nata, Portuguese leanings. Weekend waitlist.</p></div>
+  <div class="card" data-cat="brunch"><h3>L'Avenue</h3><div class="meta"><span>Plateau</span><span class="price">$$</span><span class="badge">the blowout</span></div><p>Legendary over-the-top brunch — giant plates, pistachio french toast. Expect a line; worth it.</p></div>
+  <div class="card" data-cat="brunch"><h3>Café Olimpico</h3><div class="meta"><span>Mile End</span><span class="price">$</span><span class="badge">espresso</span></div><p>Old-school Italian espresso bar. Cappuccino + cannoli, no rush, all the neighborhood energy.</p></div>
 
-  <!-- BARS -->
-  <div class="card" data-cat="bar">
-    <h3>The Coldroom</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$$</span><span class="badge pick">speakeasy</span></div>
-    <p>Hidden basement bar behind an unmarked door — ring the bell. Excellent, strong cocktails; great first-night move.</p>
-  </div>
-  <div class="card" data-cat="bar">
-    <h3>Bar Bisou Bisou</h3>
-    <div class="meta"><span>Old Montréal</span><span class="price">$$</span><span class="badge">sexy · low-key</span><span class="badge warn">closed Mon</span></div>
-    <p>Sultry basement cocktail bar, exposed brick, low-ABV menu that tells you exactly how each drink tastes.</p>
-  </div>
-  <div class="card" data-cat="bar">
-    <h3>Cloakroom Bar</h3>
-    <div class="meta"><span>Downtown</span><span class="price">$$$</span><span class="badge">bespoke</span></div>
-    <p>No menu — tell them what you like, they build it. Hidden behind a tailor shop. Small; go early or expect a wait.</p>
-  </div>
-  <div class="card" data-cat="bar">
-    <h3>Terrasse Nelligan</h3>
-    <div class="meta"><span>Old Montréal · rooftop</span><span class="price">$$$</span><span class="badge warn">seasonal — call first</span></div>
-    <p>Best-known rooftop with old-port views. Beautiful in warm weather — in November it may be closed or heated-only, so check.</p>
-  </div>
+  <div class="card" data-cat="bar"><h3>The Coldroom</h3><div class="meta"><span>Old Montréal</span><span class="price">$$$</span><span class="badge pick">speakeasy</span></div><p>Hidden basement bar behind an unmarked door — ring the bell. Excellent, strong cocktails; great first-night move.</p></div>
+  <div class="card" data-cat="bar"><h3>Bar Bisou Bisou</h3><div class="meta"><span>Old Montréal</span><span class="price">$$</span><span class="badge">sexy · low-key</span><span class="badge warn">closed Mon</span></div><p>Sultry basement cocktail bar, exposed brick, low-ABV menu that tells you exactly how each drink tastes.</p></div>
+  <div class="card" data-cat="bar"><h3>Cloakroom Bar</h3><div class="meta"><span>Downtown</span><span class="price">$$$</span><span class="badge">bespoke</span></div><p>No menu — tell them what you like, they build it. Hidden behind a tailor shop. Small; go early or expect a wait.</p></div>
+  <div class="card" data-cat="bar"><h3>Terrasse Nelligan</h3><div class="meta"><span>Old Montréal · rooftop</span><span class="price">$$$</span><span class="badge warn">seasonal — call</span></div><p>Best-known rooftop with old-port views. Beautiful when warm — in November it may be closed or heated-only, so check first.</p></div>
 
-  <div class="note"><b>MTLàTABLE tip.</b> When the participating-restaurant list drops (~late Sept), pick 2–3 dinners from it. That's how you eat at the top rooms on a fixed price.</div>
+  <div class="note"><b>MTLàTABLE tip.</b> When the participating-restaurant list drops (~late Sept), pick 2–3 dinners from it — that's how you eat the top rooms on a fixed price.</div>
 
-  <div class="foot">Prices are rough per person, food only, CAD. Tip 15–20%. <a href="map.html">Find these on the map →</a></div>
+  <div class="foot">Prices are rough per person, food only, CAD (≈30% less in USD). Tip 15–20%. <a href="map.html">Find these on the map →</a></div>
 </div>
 
 <nav class="tabbar">
   <a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</a>
   <a href="itinerary.html"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Days</a>
+  <a href="see.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/></svg>See</a>
   <a class="on" href="eat.html"><svg viewBox="0 0 24 24"><path d="M6 2v9a3 3 0 006 0V2M9 2v20M18 2c-2 0-3 2-3 5s1 5 3 5v8"/></svg>Eat</a>
-  <a href="stay.html"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 14h18M6 10V7a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>Stay</a>
   <a href="map.html"><svg viewBox="0 0 24 24"><path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg>Map</a>
 </nav>
 
 <script>
-  const chips=document.querySelectorAll('.chip');
-  const cards=document.querySelectorAll('.card[data-cat]');
+  const chips=document.querySelectorAll('.chip'), cards=document.querySelectorAll('.card[data-cat]');
   chips.forEach(c=>c.addEventListener('click',()=>{
     chips.forEach(x=>x.classList.remove('on')); c.classList.add('on');
     const f=c.dataset.f;
-    cards.forEach(card=>{
-      card.style.display=(f==='all'||card.dataset.cat===f)?'block':'none';
-    });
+    cards.forEach(card=>{ card.style.display=(f==='all'||card.dataset.cat===f)?'block':'none'; });
   }));
 </script>
 </body>
