@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0E1A2B">
+<title>The Map — Montréal</title>
+<link rel="icon" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="mark"><b>MTL</b> · the map</div>
+  <div class="pill">tap a pin</div>
+</div>
+
+<div class="wrap">
+  <section class="hero" style="padding-bottom:8px">
+    <div class="eyebrow">Everything, mapped</div>
+    <h1 style="font-size:clamp(38px,11vw,58px)">Tap around<br><em>the city.</em></h1>
+  </section>
+
+  <div class="chips" id="chips">
+    <div class="chip on" data-f="all">All</div>
+    <div class="chip" data-f="see"><span class="dot" style="background:#E8B84B"></span>See &amp; do</div>
+    <div class="chip" data-f="eat"><span class="dot" style="background:#E5604D"></span>Eat</div>
+    <div class="chip" data-f="cafe"><span class="dot" style="background:#6FB1A0"></span>Café</div>
+    <div class="chip" data-f="bar"><span class="dot" style="background:#B78BE0"></span>Bars</div>
+    <div class="chip" data-f="stay"><span class="dot" style="background:#F3EEE3"></span>Stay</div>
+  </div>
+
+  <div id="map"></div>
+  <p class="lead" style="font-size:13.5px">Pins open a card with a one-line tip and directions. Colors match the filters above.</p>
+
+  <div class="foot"><a href="itinerary.html">Back to the itinerary →</a></div>
+</div>
+
+<nav class="tabbar">
+  <a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Home</a>
+  <a href="itinerary.html"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Days</a>
+  <a href="eat.html"><svg viewBox="0 0 24 24"><path d="M6 2v9a3 3 0 006 0V2M9 2v20M18 2c-2 0-3 2-3 5s1 5 3 5v8"/></svg>Eat</a>
+  <a href="stay.html"><svg viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6M3 14h18M6 10V7a2 2 0 012-2h8a2 2 0 012 2v3"/></svg>Stay</a>
+  <a class="on" href="map.html"><svg viewBox="0 0 24 24"><path d="M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z"/><path d="M9 3v15M15 6v15"/></svg>Map</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const COLORS={see:'#E8B84B',eat:'#E5604D',cafe:'#6FB1A0',bar:'#B78BE0',stay:'#F3EEE3'};
+const LABEL={see:'See & do',eat:'Eat',cafe:'Café & brunch',bar:'Bar',stay:'Stay'};
+
+const PLACES=[
+  // stay
+  {n:"The Bresoles Hotel",c:"stay",lat:45.5055444,lng:-73.5553745,t:"Our pick — spacious studios, own parking garage, by Notre-Dame."},
+  {n:"Auberge du Vieux-Port",c:"stay",lat:45.5063931,lng:-73.5527947,t:"Historic building right on the waterfront; cozy bar downstairs."},
+  {n:"Arcadia Hôtel Boutique",c:"stay",lat:45.5040824,lng:-73.5538373,t:"Apartment-style boutique across from the Old Port; self check-in."},
+  // see
+  {n:"Notre-Dame Basilica",c:"see",lat:45.5045254,lng:-73.5561204,t:"The cobalt-and-gold interior — best indoor sight in the city."},
+  {n:"Old Port (Vieux-Port)",c:"see",lat:45.5124578,lng:-73.5484867,t:"Waterfront + cobblestone streets. Great at dusk; wear a coat."},
+  {n:"Mount Royal — Kondiaronk Lookout",c:"see",lat:45.5033726,lng:-73.5868754,t:"Best skyline view. Do it in daylight; warm up in the chalet."},
+  {n:"Museum of Fine Arts",c:"see",lat:45.4985219,lng:-73.5794001,t:"Big, warm, rainy-day proof. Budget 2–3 hours."},
+  {n:"Jean-Talon Market",c:"see",lat:45.5361095,lng:-73.6148902,t:"Little Italy market — cheese, cider, oysters. Partly indoor."},
+  {n:"Atwater Market",c:"see",lat:45.4795202,lng:-73.5769653,t:"Pretty canal-side market — snacks for the road home."},
+  // eat
+  {n:"Le Club Chasse et Pêche",c:"eat",lat:45.5089369,lng:-73.5525034,t:"The Michelin dinner. Closed Sun/Mon — reserve early."},
+  {n:"Barroco",c:"eat",lat:45.5014041,lng:-73.5559468,t:"Candlelit French — perfect first-night dinner."},
+  {n:"Garde Manger",c:"eat",lat:45.5028415,lng:-73.5555399,t:"Buzzy seafood, tasting menu, great energy."},
+  {n:"Le Majestique",c:"eat",lat:45.5175202,lng:-73.580316,t:"Plateau small plates — order family-style."},
+  {n:"Bistrot La Fabrique",c:"eat",lat:45.5181712,lng:-73.5695667,t:"Cozy date-night bistro, famous french toast."},
+  {n:"Schwartz's Deli",c:"eat",lat:45.5163503,lng:-73.5776401,t:"The smoked-meat sandwich. Go off-peak."},
+  {n:"La Banquise",c:"eat",lat:45.5253231,lng:-73.5748058,t:"30+ poutines, open 24h — the late-night move."},
+  {n:"Fairmount Bagel",c:"eat",lat:45.5228777,lng:-73.5951705,t:"Wood-fired bagels, ~24h. Half the showdown."},
+  {n:"St-Viateur Bagel",c:"eat",lat:45.5226914,lng:-73.6019581,t:"The other legend, two blocks away. Judge for yourselves."},
+  // cafe
+  {n:"Crew Collective & Café",c:"cafe",lat:45.5023198,lng:-73.5593173,t:"Brunch inside a stunning old bank hall. Get the photo."},
+  {n:"Chez José Café",c:"cafe",lat:45.518729,lng:-73.577898,t:"Tiny, cozy Plateau brunch. Closed Wed."},
+  {n:"L'Avenue",c:"cafe",lat:45.526695,lng:-73.580273,t:"Over-the-top blowout brunch. Expect a line."},
+  {n:"Café Olimpico",c:"cafe",lat:45.5241048,lng:-73.6002501,t:"Old-school Italian espresso bar in Mile End."},
+  // bar
+  {n:"The Coldroom",c:"bar",lat:45.5071915,lng:-73.5531103,t:"Speakeasy behind an unmarked door — ring the bell."},
+  {n:"Bar Bisou Bisou",c:"bar",lat:45.5070765,lng:-73.553516,t:"Sultry basement cocktails. Closed Mon."},
+  {n:"Cloakroom Bar",c:"bar",lat:45.4994655,lng:-73.5778416,t:"No menu — they build a drink to your taste."},
+  {n:"Terrasse Nelligan",c:"bar",lat:45.5039831,lng:-73.5542153,t:"Rooftop with old-port views — seasonal, call first."}
+];
+
+const map=L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([45.512,-73.567],13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; OpenStreetMap &copy; CARTO', maxZoom:19
+}).addTo(map);
+
+const markers=[];
+PLACES.forEach(p=>{
+  const m=L.circleMarker([p.lat,p.lng],{
+    radius:8, color:'#0E1A2B', weight:2,
+    fillColor:COLORS[p.c], fillOpacity:1
+  }).addTo(map);
+  const dir='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p.n+', Montreal QC');
+  m.bindPopup('<b>'+p.n+'</b><span class="pk">'+LABEL[p.c]+'</span>'+p.t+'<br><a href="'+dir+'" target="_blank" rel="noopener">Directions →</a>');
+  m.cat=p.c; markers.push(m);
+});
+
+// fit to all
+const group=L.featureGroup(markers); map.fitBounds(group.getBounds().pad(0.12));
+
+// filters
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on');
+  const f=c.dataset.f;
+  const shown=[];
+  markers.forEach(m=>{
+    if(f==='all'||m.cat===f){ m.addTo(map); shown.push(m); }
+    else { map.removeLayer(m); }
+  });
+  if(shown.length){ map.fitBounds(L.featureGroup(shown).getBounds().pad(0.12)); }
+}));
+</script>
+</body>
+</html>
